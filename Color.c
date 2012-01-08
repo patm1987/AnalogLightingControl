@@ -1,15 +1,15 @@
 
 #include "Color.h"
 
-#include <WProgram.h>
+#include "Log.h"
 
 void Color_print(struct Color* pColor)
 {
-	Serial.print("(");
-	Serial.print(pColor->r);
-	Serial.print(", ");
-	Serial.print(pColor->g);
-	Serial.print(", ");
-	Serial.print(pColor->b);
-	Serial.print(")");
+	logsz("(", kLogLevel_Debug);
+	logi(pColor->r, kLogLevel_Debug);
+	logsz(", ", kLogLevel_Debug);
+	logi(pColor->g, kLogLevel_Debug);
+	logsz(", ", kLogLevel_Debug);
+	logi(pColor->b, kLogLevel_Debug);
+	logsz(")\n", kLogLevel_Debug);
 }
