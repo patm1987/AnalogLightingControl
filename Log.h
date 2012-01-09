@@ -29,7 +29,7 @@ void logi(int i, enum LogLevel level);
 void logl(long i, enum LogLevel level);
 void logsz(const char* str, enum LogLevel level);
 
-#ifdef _cplusplus
+#ifdef __cplusplus
 }
 #endif
 

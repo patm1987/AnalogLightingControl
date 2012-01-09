@@ -1,7 +1,7 @@
 
 #include "Log.h"
 
-#include <WProgram.h>
+#include <Arduino.h>
 
 static const enum LogLevel kMinLogLevel = kLogLevel_Info;
 
@@ -14,21 +14,25 @@ void log(T t, enum LogLevel level)
 	}
 }
 
+extern "C"
 void logc(char i, enum LogLevel level)
 {
 	log(i, level);
 }
 
+extern "C"
 void logi(int i, enum LogLevel level)
 {
 	log(i, level);
 }
 
+extern "C"
 void logl(long i, enum LogLevel level)
 {
 	log(i, level);
 }
 
+extern "C"
 void logsz(const char* str, enum LogLevel level)
 {
 	log(str, level);

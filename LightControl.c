@@ -1,7 +1,7 @@
 
 #include "LightControl.h"
 
-#include <WProgram.h> // for the definition of OUTPUT
+#include <Arduino.h> // for the definition of OUTPUT
 
 /*!
  * \brief	performs any initialization needed for this light control
