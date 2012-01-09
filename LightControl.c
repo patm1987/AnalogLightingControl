@@ -3,6 +3,9 @@
 
 #include <Arduino.h> // for the definition of OUTPUT
 
+// DEBUG:
+#include "Log.h"
+
 /*!
  * \brief	performs any initialization needed for this light control
  * \param	pLightControl a pointer to the LightControl to intialize
@@ -14,6 +17,14 @@ void LightControl_setup(struct LightControl* pLightControl)
 	pinMode(pLightControl->r, OUTPUT);
 	pinMode(pLightControl->g, OUTPUT);
 	pinMode(pLightControl->b, OUTPUT);
+	
+	logsz("Light Control initialized (", kLogLevel_Debug);
+	logi(pLightControl->r, kLogLevel_Debug);
+	logsz(", ", kLogLevel_Debug);
+	logi(pLightControl->g, kLogLevel_Debug);
+	logsz(", ", kLogLevel_Debug);
+	logi(pLightControl->b, kLogLevel_Debug);
+	logsz(")\n", kLogLevel_Debug);
 }
 
 /*!

@@ -1,12 +1,16 @@
 
 #include "Timeline.h"
 
+// DEBUG:
+#include "Log.h"
+
 /*!
  * \brief	sets up a timeline, currently chains down setting up the channels
  * \param	pTimeline the Timeline to setup
  */
 void Timeline_setup(struct Timeline* pTimeline)
 {
+	logsz("Configuring timeline...\n", kLogLevel_Debug);
 	Channel_setup(&pTimeline->channels[0]);
 	Channel_setup(&pTimeline->channels[1]);
 }

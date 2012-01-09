@@ -27,6 +27,7 @@ enum LogLevel
 void logc(char i, enum LogLevel level); 
 void logi(int i, enum LogLevel level);
 void logl(long i, enum LogLevel level);
+void logfp(float i, enum LogLevel level);
 void logsz(const char* str, enum LogLevel level);
 
 #ifdef __cplusplus

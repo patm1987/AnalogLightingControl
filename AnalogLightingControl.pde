@@ -13,6 +13,8 @@ struct Timeline timeline;
 
 void setup()
 {
+	Serial.begin(9600);
+
 	memset(&timeline, 0, sizeof(timeline));
 
 	timeline.channels[0].lightControl.r = 11;
@@ -51,7 +53,7 @@ void setup()
 	timeline.channels[1].keyframes[0].lightBinding.colorHigh.b = 0;
 	timeline.channels[1].keyframes[0].duration = 1.f;
 	timeline.channels[1].keyframes[1].weight = 1.f;
-	timeline.channels[1].keyframes[1].lightBinding.analogPin = A0;
+	timeline.channels[1].keyframes[1].lightBinding.analogPin = A5;
 	timeline.channels[1].keyframes[1].lightBinding.colorLow.r = 128;
 	timeline.channels[1].keyframes[1].lightBinding.colorLow.g = 128;
 	timeline.channels[1].keyframes[1].lightBinding.colorLow.b = 128;
@@ -61,7 +63,11 @@ void setup()
 	timeline.channels[1].keyframes[1].duration = 1.f;
 	timeline.channels[1].time = 0.f;
 
+	Timeline_setup(&timeline);
+
 	lastUpdateTime = millis();
+  
+	Serial.println("Setup Complete");
 }
 
 void loop()
