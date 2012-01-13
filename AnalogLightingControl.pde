@@ -28,7 +28,7 @@ void setup()
 	timeline.channels[0].keyframes[0].lightBinding.colorHigh.r = 0;
 	timeline.channels[0].keyframes[0].lightBinding.colorHigh.g = 0;
 	timeline.channels[0].keyframes[0].lightBinding.colorHigh.b = 0;
-	timeline.channels[0].keyframes[0].duration = 1.f;
+	timeline.channels[0].keyframes[0].duration = 10.f;
 	timeline.channels[0].keyframes[1].weight = 1.f;
 	timeline.channels[0].keyframes[1].lightBinding.analogPin = A0;
 	timeline.channels[0].keyframes[1].lightBinding.colorLow.r = 128;
@@ -37,7 +37,7 @@ void setup()
 	timeline.channels[0].keyframes[1].lightBinding.colorHigh.r = 64;
 	timeline.channels[0].keyframes[1].lightBinding.colorHigh.g = 64;
 	timeline.channels[0].keyframes[1].lightBinding.colorHigh.b = 64;
-	timeline.channels[0].keyframes[1].duration = 1.f;
+	timeline.channels[0].keyframes[1].duration = 10.f;
 	timeline.channels[0].time = 0.f;
 
 	timeline.channels[1].lightControl.r = 6;
@@ -51,7 +51,7 @@ void setup()
 	timeline.channels[1].keyframes[0].lightBinding.colorHigh.r = 0;
 	timeline.channels[1].keyframes[0].lightBinding.colorHigh.g = 0;
 	timeline.channels[1].keyframes[0].lightBinding.colorHigh.b = 0;
-	timeline.channels[1].keyframes[0].duration = 1.f;
+	timeline.channels[1].keyframes[0].duration = 10.f;
 	timeline.channels[1].keyframes[1].weight = 1.f;
 	timeline.channels[1].keyframes[1].lightBinding.analogPin = A5;
 	timeline.channels[1].keyframes[1].lightBinding.colorLow.r = 128;
@@ -60,7 +60,7 @@ void setup()
 	timeline.channels[1].keyframes[1].lightBinding.colorHigh.r = 64;
 	timeline.channels[1].keyframes[1].lightBinding.colorHigh.g = 64;
 	timeline.channels[1].keyframes[1].lightBinding.colorHigh.b = 64;
-	timeline.channels[1].keyframes[1].duration = 1.f;
+	timeline.channels[1].keyframes[1].duration = 10.f;
 	timeline.channels[1].time = 0.f;
 
 	Timeline_setup(&timeline);
@@ -80,4 +80,3 @@ void loop()
 
 	lastUpdateTime = currentTime;
 }
- 

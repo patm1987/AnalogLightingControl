@@ -1,6 +1,9 @@
 
 #include "LightBinding.h"
 
+// DEBUG!
+#include "Log.h"
+
 static const int kAnalogInMax = 1023;
 static const int kAnalogInMin = 0;
 static const int kAnalogOutMax = 255;
@@ -28,10 +31,15 @@ struct Color LightBinding_update(struct LightBinding* pLightBinding)
 		pLightBinding->colorHigh.g - pLightBinding->colorLow.g,
 		pLightBinding->colorHigh.b - pLightBinding->colorLow.b
 	};
-	return (struct Color)
-	{
+	struct Color outColor =	{
 		pLightBinding->colorLow.r + inputPercent*colorDelta.r,
 		pLightBinding->colorLow.g + inputPercent*colorDelta.g,
 		pLightBinding->colorLow.b + inputPercent*colorDelta.b
 	};
+	logsz("LightBinding_update\n", kLogLevel_Debug);
+	Color_print(&pLightBinding->colorHigh);
+	Color_print(&pLightBinding->colorLow);
+	Color_print(&inputPercent);
+	Color_print(&outColor);
+	return outColor;
 }
