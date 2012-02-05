@@ -8,26 +8,50 @@
 	"buffers":
 	[
 		{
-			"file": "AnalogLightingControl.pde",
+			"file": "Color.h",
 			"settings":
 			{
-				"buffer_size": 96,
+				"buffer_size": 308,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "LightBinding.h",
+			"file": "Keyframe.h",
 			"settings":
 			{
-				"buffer_size": 325,
+				"buffer_size": 377,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "LightControl.h",
+			"file": "Channel.h",
 			"settings":
 			{
-				"buffer_size": 437,
+				"buffer_size": 542,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Color.c",
+			"settings":
+			{
+				"buffer_size": 311,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Channel.c",
+			"settings":
+			{
+				"buffer_size": 2842,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Log.h",
+			"settings":
+			{
+				"buffer_size": 571,
 				"line_ending": "Unix"
 			}
 		},
@@ -35,7 +59,23 @@
 			"file": "LightBinding.c",
 			"settings":
 			{
-				"buffer_size": 1004,
+				"buffer_size": 1383,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Keyframe.c",
+			"settings":
+			{
+				"buffer_size": 468,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "AnalogLightingControl.pde",
+			"settings":
+			{
+				"buffer_size": 3216,
 				"line_ending": "Unix"
 			}
 		}
@@ -64,23 +104,44 @@
 	},
 	"file_history":
 	[
+		"/home/pux0r3/sketchbook/AnalogLightingControl/Timeline.c",
+		"/home/pux0r3/sketchbook/AnalogLightingControl/Log.cpp",
+		"/home/pux0r3/sketchbook/AnalogLightingControl/Color.c",
+		"/home/pux0r3/sketchbook/AnalogLightingControl/Keyframe.c",
+		"/home/pux0r3/sketchbook/AnalogLightingControl/LightControl.c",
+		"/home/pux0r3/sketchbook/AnalogLightingControl/LightBinding.c",
+		"/home/pux0r3/sketchbook/AnalogLightingControl/Channel.c",
+		"/home/pux0r3/sketchbook/AnalogLightingControl/AnalogLightingControl.pde",
+		"/home/pux0r3/sketchbook/AnalogLightingControl/Log.h",
+		"/home/pux0r3/sketchbook/AnalogLightingControl/LightBinding.h",
+		"/home/pux0r3/sketchbook/AnalogLightingControl/LightControl.h",
+		"/home/pux0r3/sketchbook/AnalogLightingControl/Color.h",
+		"/home/pux0r3/sketchbook/AnalogLightingControl/Keyframe.h",
+		"/home/pux0r3/sketchbook/AnalogLightingControl/Channel.h",
+		"/home/pux0r3/sketchbook/AnalogLightingControl/Timeline.h"
 	],
 	"find":
 	{
-		"height": 0.0
+		"height": 33.0
 	},
 	"find_in_files":
 	{
 		"height": 0.0,
 		"where_history":
 		[
+			""
 		]
 	},
 	"find_state":
 	{
-		"case_sensitive": false,
+		"case_sensitive": true,
 		"find_history":
 		[
+			"Channel_setup",
+			"LightControl_setup",
+			"log(",
+			"cat",
+			"LogCat"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -88,6 +149,9 @@
 		"regex": false,
 		"replace_history":
 		[
+			"log_t(",
+			"level",
+			"LogLevel"
 		],
 		"reverse": false,
 		"show_context": true,
@@ -98,23 +162,101 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 5,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "AnalogLightingControl.pde",
+					"file": "Color.h",
 					"settings":
 					{
-						"buffer_size": 96,
+						"buffer_size": 308,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								72,
-								72
+								149,
+								149
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 144.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "Keyframe.h",
+					"settings":
+					{
+						"buffer_size": 377,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								326,
+								326
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 144.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "Channel.h",
+					"settings":
+					{
+						"buffer_size": 542,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 192.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "Color.c",
+					"settings":
+					{
+						"buffer_size": 311,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
 							]
 						],
 						"settings":
@@ -128,45 +270,46 @@
 					"type": "text"
 				},
 				{
-					"buffer": 1,
-					"file": "LightBinding.h",
+					"buffer": 4,
+					"file": "Channel.c",
 					"settings":
 					{
-						"buffer_size": 325,
+						"buffer_size": 2842,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								192,
-								192
+								1099,
+								1099
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/C++/C++.tmLanguage"
+							"syntax": "Packages/C++/C.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 516.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "LightControl.h",
+					"buffer": 5,
+					"file": "Log.h",
 					"settings":
 					{
-						"buffer_size": 437,
+						"buffer_size": 571,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								213,
-								213
+								203,
+								218
 							]
 						],
 						"settings":
@@ -174,7 +317,7 @@
 							"syntax": "Packages/C++/C++.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 256.0,
+						"translation.y": 240.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -186,19 +329,46 @@
 			"sheets":
 			[
 				{
-					"buffer": 3,
+					"buffer": 6,
 					"file": "LightBinding.c",
 					"settings":
 					{
-						"buffer_size": 1004,
+						"buffer_size": 1383,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								92,
-								92
+								43,
+								43
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "Keyframe.c",
+					"settings":
+					{
+						"buffer_size": 468,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
 							]
 						],
 						"settings":
@@ -206,7 +376,34 @@
 							"syntax": "Packages/C++/C.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 48.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "AnalogLightingControl.pde",
+					"settings":
+					{
+						"buffer_size": 3216,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								976,
+								976
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 204.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -254,7 +451,7 @@
 	"menu_visible": true,
 	"replace":
 	{
-		"height": 0.0
+		"height": 62.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -262,6 +459,42 @@
 		"height": 0.0,
 		"selected_items":
 		[
+			[
+				"log",
+				"Log.h"
+			],
+			[
+				"color.c",
+				"Color.c"
+			],
+			[
+				"channel.h",
+				"Channel.h"
+			],
+			[
+				"channel",
+				"Channel.c"
+			],
+			[
+				"time.",
+				"Timeline.c"
+			],
+			[
+				"keyframe.c",
+				"Keyframe.c"
+			],
+			[
+				"lightbinding",
+				"LightBinding.c"
+			],
+			[
+				"color.h",
+				"Color.h"
+			],
+			[
+				"",
+				"Log.h"
+			]
 		],
 		"width": 0.0
 	},

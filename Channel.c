@@ -47,16 +47,16 @@ float calculateChannelMix(
 		struct Keyframe* pCurrent = pChannel->keyframes + i;
 		if (pCurrent->duration > runningTime)
 		{
-			pK0 = pCurrent;
-			pK1 = pChannel->keyframes + (i%KEYFRAME_COUNT);
+			*pK0 = pCurrent;
+			*pK1 = pChannel->keyframes + (i%KEYFRAME_COUNT);
 			return (float)runningTime/(float)pCurrent->duration;
 		}
 		runningTime -= pCurrent->duration;
 	}
 
 	// time is outside the range of keyframes, this should never happen
-	pK0 = pChannel->keyframes + KEYFRAME_COUNT - 1;
-	pK1 = pChannel->keyframes;
+	*pK0 = pChannel->keyframes + KEYFRAME_COUNT - 1;
+	*pK1 = pChannel->keyframes;
 	return 1.f;
 }
 
@@ -96,6 +96,7 @@ void Channel_update(struct Channel* pChannel, float elapsedTime)
 	duration = calculateChannelDuration(pChannel);
 	pChannel->time = fmodf(pChannel->time, duration);
 
+	// chooses pK0 and pK1, setting up the mix appropriately
 	channelMix = calculateChannelMix(pChannel, &pK0, &pK1);
 
 	c0 = Keyframe_update(pK0);
