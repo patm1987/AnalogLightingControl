@@ -17,6 +17,9 @@ struct Timeline timeline;
 struct Channel channels[CHANNEL_COUNT];
 struct Keyframe keyframes[CHANNEL_COUNT][KEYFRAME_COUNT];
 
+struct ReadAnalogPinData readA0 = {A0};
+struct ReadAnalogPinData readA5 = {A5};
+
 void setup()
 {
 	Serial.begin(9600);
@@ -26,7 +29,8 @@ void setup()
 	memset(&keyframes, 0, sizeof(keyframes));
 
 	keyframes[0][0].weight = 1.f;
-	keyframes[0][0].lightBinding.analogPin = A0;
+	keyframes[0][0].lightBinding.analogReadCallback = readAnalogPin;
+	keyframes[0][0].lightBinding.pAnalogReadUserData = &readA0;
 	keyframes[0][0].lightBinding.colorLow.r = 255;
 	keyframes[0][0].lightBinding.colorLow.g = 0;
 	keyframes[0][0].lightBinding.colorLow.b = 0;
@@ -35,7 +39,8 @@ void setup()
 	keyframes[0][0].lightBinding.colorHigh.b = 255;
 	keyframes[0][0].duration = 10.f;
 	keyframes[0][1].weight = 1.f;
-	keyframes[0][1].lightBinding.analogPin = A0;
+	keyframes[0][1].lightBinding.analogReadCallback = readAnalogPin;
+	keyframes[0][1].lightBinding.pAnalogReadUserData = &readA0;
 	keyframes[0][1].lightBinding.colorLow.r = 0;
 	keyframes[0][1].lightBinding.colorLow.g = 255;
 	keyframes[0][1].lightBinding.colorLow.b = 0;
@@ -44,7 +49,8 @@ void setup()
 	keyframes[0][1].lightBinding.colorHigh.b = 255;
 	keyframes[0][1].duration = 1.f;
 	keyframes[0][2].weight = 1.f;
-	keyframes[0][2].lightBinding.analogPin = A0;
+	keyframes[0][2].lightBinding.analogReadCallback = readAnalogPin;
+	keyframes[0][2].lightBinding.pAnalogReadUserData = &readA0;
 	keyframes[0][2].lightBinding.colorLow.r = 0;
 	keyframes[0][2].lightBinding.colorLow.g = 0;
 	keyframes[0][2].lightBinding.colorLow.b = 255;
@@ -53,7 +59,8 @@ void setup()
 	keyframes[0][2].lightBinding.colorHigh.b = 0;
 	keyframes[0][2].duration = 10.f;
 	keyframes[0][3].weight = 1.f;
-	keyframes[0][3].lightBinding.analogPin = A0;
+	keyframes[0][3].lightBinding.analogReadCallback = readAnalogPin;
+	keyframes[0][3].lightBinding.pAnalogReadUserData = &readA0;
 	keyframes[0][3].lightBinding.colorLow.r = 255;
 	keyframes[0][3].lightBinding.colorLow.g = 255;
 	keyframes[0][3].lightBinding.colorLow.b = 255;
@@ -70,7 +77,8 @@ void setup()
 	channels[0].time = 0.f;
 
 	keyframes[1][0].weight = 1.f;
-	keyframes[1][0].lightBinding.analogPin = A0;
+	keyframes[1][0].lightBinding.analogReadCallback = readAnalogPin;
+	keyframes[1][0].lightBinding.pAnalogReadUserData = &readA5;
 	keyframes[1][0].lightBinding.colorLow.r = 255;
 	keyframes[1][0].lightBinding.colorLow.g = 255;
 	keyframes[1][0].lightBinding.colorLow.b = 255;
@@ -79,7 +87,8 @@ void setup()
 	keyframes[1][0].lightBinding.colorHigh.b = 0;
 	keyframes[1][0].duration = 1.f;
 	keyframes[1][1].weight = 1.f;
-	keyframes[1][1].lightBinding.analogPin = A5;
+	keyframes[1][1].lightBinding.analogReadCallback = readAnalogPin;
+	keyframes[1][1].lightBinding.pAnalogReadUserData = &readA5;
 	keyframes[1][1].lightBinding.colorLow.r = 128;
 	keyframes[1][1].lightBinding.colorLow.g = 128;
 	keyframes[1][1].lightBinding.colorLow.b = 128;
@@ -88,7 +97,8 @@ void setup()
 	keyframes[1][1].lightBinding.colorHigh.b = 64;
 	keyframes[1][1].duration = 10.f;
 	keyframes[1][2].weight = 1.f;
-	keyframes[1][2].lightBinding.analogPin = A0;
+	keyframes[1][2].lightBinding.analogReadCallback = readAnalogPin;
+	keyframes[1][2].lightBinding.pAnalogReadUserData = &readA5;
 	keyframes[1][2].lightBinding.colorLow.r = 255;
 	keyframes[1][2].lightBinding.colorLow.g = 255;
 	keyframes[1][2].lightBinding.colorLow.b = 255;
@@ -97,7 +107,8 @@ void setup()
 	keyframes[1][2].lightBinding.colorHigh.b = 0;
 	keyframes[1][2].duration = 1.f;
 	keyframes[1][3].weight = 1.f;
-	keyframes[1][3].lightBinding.analogPin = A5;
+	keyframes[1][3].lightBinding.analogReadCallback = readAnalogPin;
+	keyframes[1][3].lightBinding.pAnalogReadUserData = &readA5;
 	keyframes[1][3].lightBinding.colorLow.r = 128;
 	keyframes[1][3].lightBinding.colorLow.g = 128;
 	keyframes[1][3].lightBinding.colorLow.b = 128;

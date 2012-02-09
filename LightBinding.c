@@ -1,9 +1,6 @@
 
 #include "LightBinding.h"
 
-// DEBUG!
-#include "Log.h"
-
 static const int kAnalogInMax = 1023;
 static const int kAnalogInMin = 0;
 static const int kAnalogOutMax = 255;
@@ -24,8 +21,7 @@ void LightBinding_setup(struct LightBinding* pLightBinding)
  */
 struct Color LightBinding_update(struct LightBinding* pLightBinding)
 {
-	int inputValue = analogRead(pLightBinding->analogPin);
-	float inputPercent = (float)inputValue/(float)kAnalogInMax;
+	float inputPercent = pLightBinding->analogReadCallback(pLightBinding->pAnalogReadUserData);
 	struct Color colorDelta = {
 		pLightBinding->colorHigh.r - pLightBinding->colorLow.r,
 		pLightBinding->colorHigh.g - pLightBinding->colorLow.g,
@@ -37,4 +33,16 @@ struct Color LightBinding_update(struct LightBinding* pLightBinding)
 		pLightBinding->colorLow.b + inputPercent*colorDelta.b
 	};
 	return outColor;
+}
+
+/*!
+ * \brief	takes a ReadAnalogPinData as a user data pointer and returns a vlaue from 0 to 1 based on how high the pin is
+ * \param	pUserData user data to read, should be a ReadAnalogPin
+ * \return	0 if the pin is low through to a 1 if the pin is high
+ */
+float readAnalogPin(void* pUserData)
+{
+	struct ReadAnalogPinData* pPinData = (struct ReadAnalogPinData*)pUserData;
+	int inputValue = analogRead(pPinData->analogPin);
+	return (float)inputValue/(float)kAnalogInMax;
 }
