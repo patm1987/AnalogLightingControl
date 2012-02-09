@@ -11,63 +11,70 @@ unsigned long lastUpdateTime;
 
 struct Timeline timeline;
 
+#define CHANNEL_COUNT 2
+#define KEYFRAME_COUNT 2
+struct Keyframe keyframes[CHANNEL_COUNT][KEYFRAME_COUNT];
+
 void setup()
 {
 	Serial.begin(9600);
 
 	memset(&timeline, 0, sizeof(timeline));
+	keyframes[0][0].weight = 1.f;
+	keyframes[0][0].lightBinding.analogPin = A0;
+	keyframes[0][0].lightBinding.colorLow.r = 255;
+	keyframes[0][0].lightBinding.colorLow.g = 255;
+	keyframes[0][0].lightBinding.colorLow.b = 255;
+	keyframes[0][0].lightBinding.colorHigh.r = 0;
+	keyframes[0][0].lightBinding.colorHigh.g = 0;
+	keyframes[0][0].lightBinding.colorHigh.b = 0;
+	keyframes[0][0].duration = 10.f;
+	keyframes[0][1].weight = 1.f;
+	keyframes[0][1].lightBinding.analogPin = A0;
+	keyframes[0][1].lightBinding.colorLow.r = 0;
+	keyframes[0][1].lightBinding.colorLow.g = 0;
+	keyframes[0][1].lightBinding.colorLow.b = 0;
+	keyframes[0][1].lightBinding.colorHigh.r = 255;
+	keyframes[0][1].lightBinding.colorHigh.g = 255;
+	keyframes[0][1].lightBinding.colorHigh.b = 255;
+	keyframes[0][1].duration = 1.f;
 
 	timeline.channels[0].lightControl.r = 11;
 	timeline.channels[0].lightControl.g = 10;
 	timeline.channels[0].lightControl.b = 9;
-	timeline.channels[0].keyframes[0].weight = 1.f;
-	timeline.channels[0].keyframes[0].lightBinding.analogPin = A0;
-	timeline.channels[0].keyframes[0].lightBinding.colorLow.r = 255;
-	timeline.channels[0].keyframes[0].lightBinding.colorLow.g = 255;
-	timeline.channels[0].keyframes[0].lightBinding.colorLow.b = 255;
-	timeline.channels[0].keyframes[0].lightBinding.colorHigh.r = 0;
-	timeline.channels[0].keyframes[0].lightBinding.colorHigh.g = 0;
-	timeline.channels[0].keyframes[0].lightBinding.colorHigh.b = 0;
-	timeline.channels[0].keyframes[0].duration = 10.f;
-	timeline.channels[0].keyframes[1].weight = 1.f;
-	timeline.channels[0].keyframes[1].lightBinding.analogPin = A0;
-	timeline.channels[0].keyframes[1].lightBinding.colorLow.r = 128;
-	timeline.channels[0].keyframes[1].lightBinding.colorLow.g = 128;
-	timeline.channels[0].keyframes[1].lightBinding.colorLow.b = 128;
-	timeline.channels[0].keyframes[1].lightBinding.colorHigh.r = 64;
-	timeline.channels[0].keyframes[1].lightBinding.colorHigh.g = 64;
-	timeline.channels[0].keyframes[1].lightBinding.colorHigh.b = 64;
-	timeline.channels[0].keyframes[1].duration = 10.f;
+	timeline.channels[0].keyframeCount = KEYFRAME_COUNT;
+	timeline.channels[0].aKeyframes = keyframes[0];
 	timeline.channels[0].time = 0.f;
+
+	keyframes[1][0].weight = 1.f;
+	keyframes[1][0].lightBinding.analogPin = A0;
+	keyframes[1][0].lightBinding.colorLow.r = 255;
+	keyframes[1][0].lightBinding.colorLow.g = 255;
+	keyframes[1][0].lightBinding.colorLow.b = 255;
+	keyframes[1][0].lightBinding.colorHigh.r = 0;
+	keyframes[1][0].lightBinding.colorHigh.g = 0;
+	keyframes[1][0].lightBinding.colorHigh.b = 0;
+	keyframes[1][0].duration = 1.f;
+	keyframes[1][1].weight = 1.f;
+	keyframes[1][1].lightBinding.analogPin = A5;
+	keyframes[1][1].lightBinding.colorLow.r = 128;
+	keyframes[1][1].lightBinding.colorLow.g = 128;
+	keyframes[1][1].lightBinding.colorLow.b = 128;
+	keyframes[1][1].lightBinding.colorHigh.r = 64;
+	keyframes[1][1].lightBinding.colorHigh.g = 64;
+	keyframes[1][1].lightBinding.colorHigh.b = 64;
+	keyframes[1][1].duration = 10.f;
 
 	timeline.channels[1].lightControl.r = 6;
 	timeline.channels[1].lightControl.g = 5;
 	timeline.channels[1].lightControl.b = 3;
-	timeline.channels[1].keyframes[0].weight = 1.f;
-	timeline.channels[1].keyframes[0].lightBinding.analogPin = A0;
-	timeline.channels[1].keyframes[0].lightBinding.colorLow.r = 255;
-	timeline.channels[1].keyframes[0].lightBinding.colorLow.g = 255;
-	timeline.channels[1].keyframes[0].lightBinding.colorLow.b = 255;
-	timeline.channels[1].keyframes[0].lightBinding.colorHigh.r = 0;
-	timeline.channels[1].keyframes[0].lightBinding.colorHigh.g = 0;
-	timeline.channels[1].keyframes[0].lightBinding.colorHigh.b = 0;
-	timeline.channels[1].keyframes[0].duration = 10.f;
-	timeline.channels[1].keyframes[1].weight = 1.f;
-	timeline.channels[1].keyframes[1].lightBinding.analogPin = A5;
-	timeline.channels[1].keyframes[1].lightBinding.colorLow.r = 128;
-	timeline.channels[1].keyframes[1].lightBinding.colorLow.g = 128;
-	timeline.channels[1].keyframes[1].lightBinding.colorLow.b = 128;
-	timeline.channels[1].keyframes[1].lightBinding.colorHigh.r = 64;
-	timeline.channels[1].keyframes[1].lightBinding.colorHigh.g = 64;
-	timeline.channels[1].keyframes[1].lightBinding.colorHigh.b = 64;
-	timeline.channels[1].keyframes[1].duration = 10.f;
+	timeline.channels[1].keyframeCount = KEYFRAME_COUNT;
+	timeline.channels[1].aKeyframes = keyframes[1];
 	timeline.channels[1].time = 0.f;
 
 	Timeline_setup(&timeline);
 
 	lastUpdateTime = millis();
-  
-	Serial.println("Setup Complete");
 }
 
 void loop()

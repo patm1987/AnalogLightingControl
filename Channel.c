@@ -4,9 +4,6 @@
 #include <math.h>
 #include <stddef.h>
 
-// DEBUG!
-#include "Log.h"
-
 /*!
  * \brief	calculates the total duration of one execution of \a pChannel
  * \param	pChannel the Channel whose duration will be calculated
@@ -16,9 +13,9 @@ float calculateChannelDuration(struct Channel* pChannel)
 {
 	float duration = 0.f;
 	int i;
-	for (i = 0; i < KEYFRAME_COUNT; i++)
+	for (i = 0; i < pChannel->keyframeCount; i++)
 	{
-		duration += pChannel->keyframes[i].duration;
+		duration += pChannel->aKeyframes[i].duration;
 	}
 	return duration;
 }
@@ -42,21 +39,22 @@ float calculateChannelMix(
 	*pK1 = NULL;
 
 	// figure out the time 
-	for (i = 0; i < KEYFRAME_COUNT; i++)
+	for (i = 0; i < pChannel->keyframeCount; i++)
 	{
-		struct Keyframe* pCurrent = pChannel->keyframes + i;
+		struct Keyframe* pCurrent = pChannel->aKeyframes + i;
 		if (pCurrent->duration > runningTime)
 		{
 			*pK0 = pCurrent;
-			*pK1 = pChannel->keyframes + (i%KEYFRAME_COUNT);
-			return (float)runningTime/(float)pCurrent->duration;
+			*pK1 = pChannel->aKeyframes + ((i+1)%pChannel->keyframeCount);
+			float interpolationPercent = runningTime/pCurrent->duration;
+			return interpolationPercent;
 		}
 		runningTime -= pCurrent->duration;
 	}
 
 	// time is outside the range of keyframes, this should never happen
-	*pK0 = pChannel->keyframes + KEYFRAME_COUNT - 1;
-	*pK1 = pChannel->keyframes;
+	*pK0 = pChannel->aKeyframes + pChannel->keyframeCount - 1;
+	*pK1 = pChannel->aKeyframes;
 	return 1.f;
 }
 
@@ -69,9 +67,9 @@ void Channel_setup(struct Channel* pChannel)
 	int i;
 	LightControl_setup(&pChannel->lightControl);
 
-	for (i = 0; i < KEYFRAME_COUNT; i++)
+	for (i = 0; i < pChannel->keyframeCount; i++)
 	{
-		Keyframe_setup(&pChannel->keyframes[i]);
+		Keyframe_setup(&pChannel->aKeyframes[i]);
 	}
 }
 
@@ -106,5 +104,6 @@ void Channel_update(struct Channel* pChannel, float elapsedTime)
 		c0.g + channelMix*(c1.g - c0.g),
 		c0.b + channelMix*(c1.b - c0.b)
 	};
+
 	LightControl_apply(&pChannel->lightControl, &outColor);
 }

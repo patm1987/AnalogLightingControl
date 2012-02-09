@@ -36,12 +36,5 @@ struct Color LightBinding_update(struct LightBinding* pLightBinding)
 		pLightBinding->colorLow.g + inputPercent*colorDelta.g,
 		pLightBinding->colorLow.b + inputPercent*colorDelta.b
 	};
-	logsz("LightBinding_update\n", kLogLevel_Debug);
-	Color_print(&pLightBinding->colorHigh);
-	Color_print(&pLightBinding->colorLow);
-	logsz("Percent: ", kLogLevel_Debug);
-	logfp(inputPercent, kLogLevel_Debug);
-	logsz("\n", kLogLevel_Debug);
-	Color_print(&outColor);
 	return outColor;
 }

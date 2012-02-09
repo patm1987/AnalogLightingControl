@@ -10,13 +10,11 @@ extern "C"
 {
 #endif
 
-// TODO: temporary, in the future have a variable keyframe count
-#define KEYFRAME_COUNT 2
-
 struct Channel
 {
 	struct LightControl lightControl;
-	struct Keyframe keyframes[KEYFRAME_COUNT]; // in the future, a linked list of keyframes
+	int keyframeCount;
+	struct Keyframe *aKeyframes;
 	float time;
 };
 
