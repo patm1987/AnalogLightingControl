@@ -9,11 +9,10 @@ extern "C"
 {
 #endif
 
-#define CHANNEL_COUNT 2
-
 struct Timeline
 {
-	struct Channel channels[CHANNEL_COUNT]; // in the future, a dynamically sized list
+	int channelCount;
+	struct Channel* aChannels;
 };
 
 void Timeline_setup(struct Timeline* pTimeline);

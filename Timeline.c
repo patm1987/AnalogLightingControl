@@ -10,9 +10,13 @@
  */
 void Timeline_setup(struct Timeline* pTimeline)
 {
+	int channel = 0;
 	logsz("Configuring timeline...\n", kLogLevel_Debug);
-	Channel_setup(&pTimeline->channels[0]);
-	Channel_setup(&pTimeline->channels[1]);
+
+	for (channel = 0; channel < pTimeline->channelCount; channel++)
+	{
+		Channel_setup(pTimeline->aChannels + channel);
+	}
 }
 
 /*!
@@ -23,8 +27,8 @@ void Timeline_setup(struct Timeline* pTimeline)
 void Timeline_update(struct Timeline* pTimeline, float elapsedTime)
 {
 	int i;
-	for (i = 0; i < CHANNEL_COUNT; i++)
+	for (i = 0; i < pTimeline->channelCount; i++)
 	{
-		Channel_update(&pTimeline->channels[i], elapsedTime);
+		Channel_update(pTimeline->aChannels + i, elapsedTime);
 	}
 }

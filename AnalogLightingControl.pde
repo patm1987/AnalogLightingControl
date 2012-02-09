@@ -13,6 +13,8 @@ struct Timeline timeline;
 
 #define CHANNEL_COUNT 2
 #define KEYFRAME_COUNT 2
+
+struct Channel channels[CHANNEL_COUNT];
 struct Keyframe keyframes[CHANNEL_COUNT][KEYFRAME_COUNT];
 
 void setup()
@@ -20,6 +22,9 @@ void setup()
 	Serial.begin(9600);
 
 	memset(&timeline, 0, sizeof(timeline));
+	memset(&channels, 0, sizeof(channels));
+	memset(&keyframes, 0, sizeof(keyframes));
+
 	keyframes[0][0].weight = 1.f;
 	keyframes[0][0].lightBinding.analogPin = A0;
 	keyframes[0][0].lightBinding.colorLow.r = 255;
@@ -39,12 +44,12 @@ void setup()
 	keyframes[0][1].lightBinding.colorHigh.b = 255;
 	keyframes[0][1].duration = 1.f;
 
-	timeline.channels[0].lightControl.r = 11;
-	timeline.channels[0].lightControl.g = 10;
-	timeline.channels[0].lightControl.b = 9;
-	timeline.channels[0].keyframeCount = KEYFRAME_COUNT;
-	timeline.channels[0].aKeyframes = keyframes[0];
-	timeline.channels[0].time = 0.f;
+	channels[0].lightControl.r = 11;
+	channels[0].lightControl.g = 10;
+	channels[0].lightControl.b = 9;
+	channels[0].keyframeCount = KEYFRAME_COUNT;
+	channels[0].aKeyframes = keyframes[0];
+	channels[0].time = 0.f;
 
 	keyframes[1][0].weight = 1.f;
 	keyframes[1][0].lightBinding.analogPin = A0;
@@ -65,12 +70,15 @@ void setup()
 	keyframes[1][1].lightBinding.colorHigh.b = 64;
 	keyframes[1][1].duration = 10.f;
 
-	timeline.channels[1].lightControl.r = 6;
-	timeline.channels[1].lightControl.g = 5;
-	timeline.channels[1].lightControl.b = 3;
-	timeline.channels[1].keyframeCount = KEYFRAME_COUNT;
-	timeline.channels[1].aKeyframes = keyframes[1];
-	timeline.channels[1].time = 0.f;
+	channels[1].lightControl.r = 6;
+	channels[1].lightControl.g = 5;
+	channels[1].lightControl.b = 3;
+	channels[1].keyframeCount = KEYFRAME_COUNT;
+	channels[1].aKeyframes = keyframes[1];
+	channels[1].time = 0.f;
+
+	timeline.channelCount = 2;
+	timeline.aChannels = channels;
 
 	Timeline_setup(&timeline);
 
