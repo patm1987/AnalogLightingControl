@@ -12,7 +12,7 @@ unsigned long lastUpdateTime;
 struct Timeline timeline;
 
 #define CHANNEL_COUNT 2
-#define KEYFRAME_COUNT 2
+#define KEYFRAME_COUNT 4
 
 struct Channel channels[CHANNEL_COUNT];
 struct Keyframe keyframes[CHANNEL_COUNT][KEYFRAME_COUNT];
@@ -28,21 +28,39 @@ void setup()
 	keyframes[0][0].weight = 1.f;
 	keyframes[0][0].lightBinding.analogPin = A0;
 	keyframes[0][0].lightBinding.colorLow.r = 255;
-	keyframes[0][0].lightBinding.colorLow.g = 255;
-	keyframes[0][0].lightBinding.colorLow.b = 255;
+	keyframes[0][0].lightBinding.colorLow.g = 0;
+	keyframes[0][0].lightBinding.colorLow.b = 0;
 	keyframes[0][0].lightBinding.colorHigh.r = 0;
-	keyframes[0][0].lightBinding.colorHigh.g = 0;
-	keyframes[0][0].lightBinding.colorHigh.b = 0;
+	keyframes[0][0].lightBinding.colorHigh.g = 255;
+	keyframes[0][0].lightBinding.colorHigh.b = 255;
 	keyframes[0][0].duration = 10.f;
 	keyframes[0][1].weight = 1.f;
 	keyframes[0][1].lightBinding.analogPin = A0;
 	keyframes[0][1].lightBinding.colorLow.r = 0;
-	keyframes[0][1].lightBinding.colorLow.g = 0;
+	keyframes[0][1].lightBinding.colorLow.g = 255;
 	keyframes[0][1].lightBinding.colorLow.b = 0;
 	keyframes[0][1].lightBinding.colorHigh.r = 255;
-	keyframes[0][1].lightBinding.colorHigh.g = 255;
+	keyframes[0][1].lightBinding.colorHigh.g = 0;
 	keyframes[0][1].lightBinding.colorHigh.b = 255;
 	keyframes[0][1].duration = 1.f;
+	keyframes[0][2].weight = 1.f;
+	keyframes[0][2].lightBinding.analogPin = A0;
+	keyframes[0][2].lightBinding.colorLow.r = 0;
+	keyframes[0][2].lightBinding.colorLow.g = 0;
+	keyframes[0][2].lightBinding.colorLow.b = 255;
+	keyframes[0][2].lightBinding.colorHigh.r = 255;
+	keyframes[0][2].lightBinding.colorHigh.g = 255;
+	keyframes[0][2].lightBinding.colorHigh.b = 0;
+	keyframes[0][2].duration = 10.f;
+	keyframes[0][3].weight = 1.f;
+	keyframes[0][3].lightBinding.analogPin = A0;
+	keyframes[0][3].lightBinding.colorLow.r = 255;
+	keyframes[0][3].lightBinding.colorLow.g = 255;
+	keyframes[0][3].lightBinding.colorLow.b = 255;
+	keyframes[0][3].lightBinding.colorHigh.r = 0;
+	keyframes[0][3].lightBinding.colorHigh.g = 0;
+	keyframes[0][3].lightBinding.colorHigh.b = 0;
+	keyframes[0][3].duration = 1.f;
 
 	channels[0].lightControl.r = 11;
 	channels[0].lightControl.g = 10;
@@ -69,6 +87,24 @@ void setup()
 	keyframes[1][1].lightBinding.colorHigh.g = 64;
 	keyframes[1][1].lightBinding.colorHigh.b = 64;
 	keyframes[1][1].duration = 10.f;
+	keyframes[1][2].weight = 1.f;
+	keyframes[1][2].lightBinding.analogPin = A0;
+	keyframes[1][2].lightBinding.colorLow.r = 255;
+	keyframes[1][2].lightBinding.colorLow.g = 255;
+	keyframes[1][2].lightBinding.colorLow.b = 255;
+	keyframes[1][2].lightBinding.colorHigh.r = 0;
+	keyframes[1][2].lightBinding.colorHigh.g = 0;
+	keyframes[1][2].lightBinding.colorHigh.b = 0;
+	keyframes[1][2].duration = 1.f;
+	keyframes[1][3].weight = 1.f;
+	keyframes[1][3].lightBinding.analogPin = A5;
+	keyframes[1][3].lightBinding.colorLow.r = 128;
+	keyframes[1][3].lightBinding.colorLow.g = 128;
+	keyframes[1][3].lightBinding.colorLow.b = 128;
+	keyframes[1][3].lightBinding.colorHigh.r = 64;
+	keyframes[1][3].lightBinding.colorHigh.g = 64;
+	keyframes[1][3].lightBinding.colorHigh.b = 64;
+	keyframes[1][3].duration = 10.f;
 
 	channels[1].lightControl.r = 6;
 	channels[1].lightControl.g = 5;

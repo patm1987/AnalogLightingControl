@@ -9,6 +9,12 @@ extern "C"
 {
 #endif
 
+/*!
+ * \brief	use Timeline to describe a timeline of light channels and associated analog inputs
+ *
+ *	channelCount should indicate the number of channels in aChannels
+ * 	aChannels is an array of channels
+ */
 struct Timeline
 {
 	int channelCount;
